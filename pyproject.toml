@@ -2,20 +2,20 @@
 name = "uvicorn-gunicorn-docker"
 version = "0.1.0"
 description = "Docker image with Uvicorn managed by Gunicorn for high-performance web applications in Python 3.7 and 3.6 with performance auto-tuning. Optionally with Alpine Linux."
-authors = ["Sebastián Ramírez <tiangolo@gmail.com>"]
+authors = ["Sebastián Ramírez <tiangolo@gmail.com>", "Marc Fez <marc.fez@gmail.com"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.6"
-docker = "^4.2.0"
-pytest = "^5.4.1"
+python = "^3.8"
+docker = "^5.0.3"
+pytest = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
-black = "^19.10b0"
-isort = "^4.3.21"
-autoflake = "^1.3.1"
-mypy = "^0.770"
+black = "^22.6.0"
+isort = "^5.10.1"
+autoflake = "^1.4"
+mypy = "^0.971"
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=1.1.14"]
 build-backend = "poetry.masonry.api"

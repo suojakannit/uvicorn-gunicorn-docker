@@ -1,11 +1,9 @@
-FROM python:3.6-alpine3.8
+FROM python:3.9
 
 LABEL maintainer="Sebastian Ramirez <tiangolo@gmail.com>"
 
 COPY requirements.txt /tmp/requirements.txt
-RUN apk add --no-cache --virtual .build-deps gcc libc-dev make \
-    && pip install --no-cache-dir -r /tmp/requirements.txt \
-    && apk del .build-deps gcc libc-dev make
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
