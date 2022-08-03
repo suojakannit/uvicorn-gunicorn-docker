@@ -10,15 +10,15 @@
 * [`python3.9-slim` _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.9-slim.dockerfile)
 * [`python3.8-slim` _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.8-slim.dockerfile)
 
-**Note**: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uvicorn-gunicorn/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `tiangolo/uvicorn-gunicorn:python3.7-2019-10-15`.
+**Note**: There are [tags for each build date](https://hub.docker.com/r/tiangolo/uvicorn-gunicorn/tags). If you need to "pin" the Docker image version you use, you can select one of those tags. E.g. `sanctflow/uvicorn-gunicorn:python3.7-2022-08-04`.
 
 # uvicorn-gunicorn
 
-[**Docker**](https://www.docker.com/) image with [**Uvicorn**](https://www.uvicorn.org/) managed by [**Gunicorn**](https://gunicorn.org/) for high-performance web applications in **[Python](https://www.python.org/) 3.6 and above** with performance auto-tuning. Optionally in a slim version or based on Alpine Linux.
+[**Docker**](https://www.docker.com/) image with [**Uvicorn**](https://www.uvicorn.org/) managed by [**Gunicorn**](https://gunicorn.org/) for high-performance web applications in **[Python](https://www.python.org/) 3.8 and above** with performance auto-tuning. Optionally in a slim version or based on Alpine Linux.
 
 **GitHub repo**: [https://github.com/suojakannit/uvicorn-gunicorn-docker](https://github.com/suojakannit/uvicorn-gunicorn-docker)
 
-**Docker Hub image**: [https://hub.docker.com/r/tiangolo/uvicorn-gunicorn/](https://hub.docker.com/r/tiangolo/uvicorn-gunicorn/)
+**Docker Hub image**: [https://hub.docker.com/r/sanctflow/uvicorn-gunicorn/](https://hub.docker.com/r/sanctflow/uvicorn-gunicorn/)
 
 ## Description
 
@@ -98,7 +98,7 @@ That way, you get the best of concurrency and parallelism in simple deployments.
 
 That way, you get the best of concurrency and parallelism.
 
-### `tiangolo/uvicorn-gunicorn`
+### `sanctflow/uvicorn-gunicorn`
 
 This image will set a sensible configuration based on the server it is running on (the amount of CPU cores available) without making sacrifices.
 
@@ -110,16 +110,16 @@ There is also a slim version and another one based on Alpine Linux. If you want 
 
 This image was created to be the base image for:
 
-* [**tiangolo/uvicorn-gunicorn-fastapi**](https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker)
+* [**sanctflow/uvicorn-gunicorn-fastapi**](https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker)
 
 But could be used as the base image to run any Python web application that uses the ASGI specification.
 
 
-If you are creating a new [**FastAPI**](https://fastapi.tiangolo.com/) web application you should use [**tiangolo/uvicorn-gunicorn-fastapi**](https://github.com/suojakannit/uvicorn-gunicorn-fastapi-docker) instead.
+If you are creating a new [**FastAPI**](https://fastapi.tiangolo.com/) web application you should use [**sanctflow/uvicorn-gunicorn-fastapi**](https://github.com/suojakannit/uvicorn-gunicorn-fastapi-docker) instead.
 
 **Note**: FastAPI is based on Starlette and adds several features on top of it. Useful for APIs and other cases: data validation, data conversion, documentation with OpenAPI, dependency injection, security/authentication and others.
 
-**Note**: Unless you are doing something more technically advanced, you probably should be using [**FastAPI**](https://fastapi.tiangolo.com/) with [**tiangolo/uvicorn-gunicorn-fastapi**](https://github.com/suojakannit/uvicorn-gunicorn-fastapi-docker).
+**Note**: Unless you are doing something more technically advanced, you probably should be using [**FastAPI**](https://fastapi.tiangolo.com/) with [**sanctflow/uvicorn-gunicorn-fastapi**](https://github.com/suojakannit/uvicorn-gunicorn-fastapi-docker).
 
 ## How to use
 
@@ -130,7 +130,7 @@ You can use this image as a base image for other images.
 Assuming you have a file `requirements.txt`, you could have a `Dockerfile` like this:
 
 ```Dockerfile
-FROM tiangolo/uvicorn-gunicorn:python3.9
+FROM sanctflow/uvicorn-gunicorn:python3.9
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -188,7 +188,7 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM tiangolo/uvicorn-gunicorn:python3.9
+FROM sanctflow/uvicorn-gunicorn:python3.9
 
 COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
 
