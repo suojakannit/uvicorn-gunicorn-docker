@@ -4,7 +4,6 @@
 
 * [`python3.10`, `latest` _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.10.dockerfile)
 * [`python3.9`, _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.8.dockerfile)
-* [`python3.9`, _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.9.dockerfile)
 * [`python3.8`, _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.8.dockerfile)
 * [`python3.10-slim` _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.10-slim.dockerfile)
 * [`python3.9-slim` _(Dockerfile)_](https://github.com/suojakannit/uvicorn-gunicorn-docker/blob/master/docker-images/python3.9-slim.dockerfile)
@@ -114,7 +113,6 @@ This image was created to be the base image for:
 
 But could be used as the base image to run any Python web application that uses the ASGI specification.
 
-
 If you are creating a new [**FastAPI**](https://fastapi.tiangolo.com/) web application you should use [**sanctflow/uvicorn-gunicorn-fastapi**](https://github.com/suojakannit/uvicorn-gunicorn-fastapi-docker) instead.
 
 **Note**: FastAPI is based on Starlette and adds several features on top of it. Useful for APIs and other cases: data validation, data conversion, documentation with OpenAPI, dependency injection, security/authentication and others.
@@ -157,7 +155,7 @@ docker build -t myimage ./
 docker run -d --name mycontainer -p 80:80 myimage
 ```
 
-You should be able to check it in your Docker container's URL, for example: http://192.168.99.100/ or http://127.0.0.1/ (or equivalent, using your Docker host).
+You should be able to check it in your Docker container's URL, for example: <http://192.168.99.100/> or <http://127.0.0.1/> (or equivalent, using your Docker host).
 
 ## Dependencies and packages
 
@@ -201,11 +199,11 @@ That will:
 
 * Install poetry and configure it for running inside of the Docker container.
 * Copy your application requirements.
-    * Because it uses `./poetry.lock*` (ending with a `*`), it won't crash if that file is not available yet.
+  * Because it uses `./poetry.lock*` (ending with a `*`), it won't crash if that file is not available yet.
 * Install the dependencies.
 * Then copy your app code.
 
-It's important to copy the app code *after* installing the dependencies, that way you can take advantage of Docker's cache. That way it won't have to install everything from scratch every time you update your application files, only when you add new dependencies.
+It's important to copy the app code _after_ installing the dependencies, that way you can take advantage of Docker's cache. That way it won't have to install everything from scratch every time you update your application files, only when you add new dependencies.
 
 This also applies for any other way you use to install your dependencies. If you use a `requirements.txt`, copy it alone and install all the dependencies on the top of the `Dockerfile`, and add your app code after it.
 
@@ -614,7 +612,7 @@ docker run -d -p 80:80 -v $(pwd):/app myimage /start-reload.sh
 ```
 
 * `-v $(pwd):/app`: means that the directory `$(pwd)` should be mounted as a volume inside of the container at `/app`.
-    * `$(pwd)`: runs `pwd` ("print working directory") and puts it as part of the string.
+  * `$(pwd)`: runs `pwd` ("print working directory") and puts it as part of the string.
 * `/start-reload.sh`: adding something (like `/start-reload.sh`) at the end of the command, replaces the default "command" with this one. In this case, it replaces the default (`/start.sh`) with the development alternative `/start-reload.sh`.
 
 #### Development live reload - Technical Details
@@ -648,21 +646,22 @@ All the image tags, configurations, environment variables and application option
 * ✏️ Fix typo (type annotation) in tests. PR [#55](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/55) by [@tiangolo](https://github.com/tiangolo).
 * 👷 Add GitHub Action latest-changes, update issue-manager, add funding. PR [#53](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/53) by [@tiangolo](https://github.com/tiangolo).
 * ⬆️ Install uvicorn[standard] to include uvloop and Gunicorn support. PR [#54](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/54) by [@tiangolo](https://github.com/tiangolo).
+
 ### 0.6.0
 
 * Add docs about installing and pinning dependencies. PR [#41](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/41).
 * Add `slim` version. PR [#40](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/40).
 * Remove leftover unneeded config for tests. PR [#39](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/39).
 * Add extra configs, tests, and docs for:
-    * `WORKER_CLASS`
-    * `TIMEOUT`
-    * `KEEP_ALIVE`
-    * `GRACEFUL_TIMEOUT`
-    * `ACCESS_LOG`
-    * `ERROR_LOG`
-    * `GUNICORN_CMD_ARGS`
-    * `MAX_WORKERS`
-    * PR [#38](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/38)
+  * `WORKER_CLASS`
+  * `TIMEOUT`
+  * `KEEP_ALIVE`
+  * `GRACEFUL_TIMEOUT`
+  * `ACCESS_LOG`
+  * `ERROR_LOG`
+  * `GUNICORN_CMD_ARGS`
+  * `MAX_WORKERS`
+  * PR [#38](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/38)
 * Set up CI using GitHub actions, they provide more free instances, so builds finish faster (4 min vs 9 min). PR [#37](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/37).
 * Add support for Python 3.8. PR [#36](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/36).
 * Refactor tests to remove custom testing Dockerfiles, generate them during tests. PR [#35](https://github.com/tiangolo/uvicorn-gunicorn-docker/pull/35).
